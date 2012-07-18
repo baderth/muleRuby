@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="adding-logging-to-a-flow">
+    <flow SubFlow="false" name="EchoFlow">
+        <properties>
+            <property name="processingStrategy2"/>
+            <property name="processingStrategy"/>
+            <property name="bussinessEventsLabel"/>
+            <property name="tracking:enable-default-events"/>
+        </properties>
+        <lane hadOnlyOneElement="false" entity-id="f9730781-8e94-43c1-ae90-01582b44abf0">
+            <endpoint direction="Inbound" message-exchange-pattern="OneWay" name="HTTP" type="http://www.mulesoft.org/schema/mule/http/endpoint" entity-id="e2b4e10e-da13-4389-b263-1d499c775a91">
+                <properties>
+                    <property name="exchange-pattern" value="one-way"/>
+                    <property name="exchange-pattern" value="request-response"/>
+                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/http/endpoint"/>
+                    <property name="httpLabel"/>
+                    <property name="host" value="localhost"/>
+                    <property name="port" value="8084"/>
+                    <property name="path"/>
+                    <property name="method"/>
+                    <property name="businessEventsLabel"/>
+                    <property name="tracking:enable-default-events"/>
+                    <property name="address"/>
+                    <property name="encoding"/>
+                    <property name="disableTransportTransformer"/>
+                    <property name="mimeType"/>
+                    <property name="responseTimeout"/>
+                    <property name="followRedirects"/>
+                    <property name="connector-ref"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="responseTransformer-refs"/>
+                    <property name="user"/>
+                    <property name="password"/>
+                    <property name="contentType"/>
+                    <property name="keep-alive"/>
+                </properties>
+                <description>Process HTTP requests or responses.</description>
+            </endpoint>
+            <pattern name="Object to String" type="http://www.mulesoft.org/schema/mule/core/object-to-string-transformer" entity-id="6a67e767-4ed7-471b-9b17-ee2576442e84"/>
+            <pattern name="Ruby" type="http://www.mulesoft.org/schema/mule/scripting/rubyComponent" entity-id="7ac34e1f-e5cd-46f1-9425-e5a2f474ea7b">
+                <properties>
+                    <property name="ref" value=""/>
+                    <property name="file" value="c:\apps\rubyComponent.rb"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/core/refInterceptorStackType;298521325">
+                        <property name="ref" value=""/>
+                    </property-collection>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script;1712305996">
+                        <property name="file" value="c:\apps\rubyComponent.rb"/>
+                    </property-collection>
+                </properties>
+                <description></description>
+            </pattern>
+            <pattern name="Ruby" type="http://www.mulesoft.org/schema/mule/scripting/rubyComponent" entity-id="5c4a4670-c77e-446e-b348-51324c26f2a4">
+                <properties>
+                    <property name="ref" value=""/>
+                    <property name="file" value="c:\apps\rubyComponent2.rb"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/core/refInterceptorStackType;29431688">
+                        <property name="ref" value=""/>
+                    </property-collection>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script;1336381323">
+                        <property name="file" value="c:\apps\rubyComponent2.rb"/>
+                    </property-collection>
+                </properties>
+                <description></description>
+            </pattern>
+        </lane>
+    </flow>
+</mule-configuration>
